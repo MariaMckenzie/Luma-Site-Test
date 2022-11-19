@@ -1,0 +1,42 @@
+module.exports = [
+    { 
+        type: "Women",
+        category: "Tops",
+        subcategory: "Tees",
+        name: "Desiree Fitness Tee",
+        size: "S",
+        colour: "Orange",
+    },
+    { 
+        type: "Women",
+        category: "Bottoms",
+        subcategory: "Pants",
+        name: "Portia Capri",
+        size: 28,
+        colour: "Green",
+    },
+    { 
+        type: "Men",
+        category: "Tops",
+        subcategory: "Jackets",
+        name: "Proteus Fitness Jackshirt",
+        size: "L",
+        colour: "Black",
+    },
+    { 
+        type: "Men",
+        category: "Bottoms",
+        subcategory: "Pants",
+        name: "Cronus Yoga Pant",
+        size: 34,
+        colour: "Black",
+    },
+    { 
+        type: "Gear",
+        category: "Bags",
+        subcategory: "",
+        name: "Push It Messenger Bag",
+        size: 0,
+        colour: "",
+    },
+]
