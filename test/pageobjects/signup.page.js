@@ -29,7 +29,7 @@ class SignupPage extends Page {
         return $('#password-confirmation');
     }
     
-    get checkSubscripe () {
+    get checkSubscribe () {
         return $('#is_subscribed');
     }
 
@@ -57,14 +57,11 @@ class SignupPage extends Page {
     get errorInputConfirmationPassword () {
         return $('#password-confirmation-error');
     }
-    
-    get checkSubscripe () {
-        return $('#is_subscribed');
-    }
 
-    get btnSubmit () {
-        return $('button[title="Create an Account"]');
+    get errorExistingAccount () {
+        return $('#maincontent > div.page.messages > div:nth-child(2) > div > div');
     }
+    
 
     /**
      * a method to encapsule automation code to interact with the page
@@ -74,10 +71,10 @@ class SignupPage extends Page {
         await this.inputLastname.setValue(lastname);
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
-        await this.inputPassword.setValue(confirmPassword);
+        await this.inputConfirmationPassword.setValue(confirmPassword);
 
         if (isChecked) {
-            await this.checkSubscripe.click();
+            await this.checkSubscribe.click();
         }
             
         await this.btnSubmit.click();
