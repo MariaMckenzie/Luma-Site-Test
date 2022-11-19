@@ -1,21 +1,21 @@
 module.exports = [
-    {
+    { //0 - valid info with subscription
         firstname: "Tom",
         lastname: "Smith",
-        email: "tomsmith@mail.com",
+        email: "tomsmith8@serendipity.com",
         password: "P@ssw0rd",
         confirmPassword: "P@ssw0rd",
         isChecked: true,
     },
-    {
-        firstname: "Tom",
+    { //1 - valid info without subscription
+        firstname: "Tina",
         lastname: "Smith",
-        email: "tomsmith@mail.com",
+        email: "tinasmith8@serendipity.com",
         password: "P@ssw0rd",
         confirmPassword: "P@ssw0rd",
         isChecked: false,
     },
-    {
+    { //2 - missing info
         firstname: "Tom",
         lastname: "",
         email: "",
@@ -23,12 +23,36 @@ module.exports = [
         confirmPassword: "P@ssw0rd",
         isChecked: false,
     },
-    {
+    { //3 - mismatch passwords
+        firstname: "Tom",
+        lastname: "",
+        email: "",
+        password: "P@ssword1",
+        confirmPassword: "P@ssw0rd",
+        isChecked: false,
+    },
+    { //4 - invalid password
+        firstname: "Tom",
+        lastname: "",
+        email: "",
+        password: "Password",
+        confirmPassword: "Password",
+        isChecked: false,
+    },
+    { //5 - all fields are empty
         firstname: "",
         lastname: "",
         email: "",
         password: "",
         confirmPassword: "",
         isChecked: false,
+    },
+    { //6 - existing account
+        firstname: "Jane",
+        lastname: "Doe",
+        email: "janedoe@mail.com",
+        password: "P@ssw0rd",
+        confirmPassword: "P@ssw0rd",
+        isChecked: true,
     },
 ]
