@@ -1,5 +1,4 @@
 const SignupPage = require('../../pageobjects/signup.page');
-const AccountPage = require('../../pageobjects/account.page');
 const signupData = require('../../data/signup.data');
 
 describe.skip('Luma Ecommerce Site - Signup Page (3)', () => {
