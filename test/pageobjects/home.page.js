@@ -22,6 +22,11 @@ class HomePage extends Page {
         return $('#ui-id-6');
     }
 
+    get searchBar () {
+        return $('#search');
+    }
+    
+
     /**
      * overwrite specific options to adapt it to page object
      */
