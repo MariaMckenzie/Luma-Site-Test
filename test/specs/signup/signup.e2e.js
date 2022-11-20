@@ -1,8 +1,8 @@
 const SignupPage = require('../../pageobjects/signup.page');
 const signupData = require('../../data/signup.data');
 
-describe.skip('Luma Ecommerce Site - Signup Page (3)', () => {
-    before(function () {
+describe('Luma Ecommerce Site - Signup Page (3)', () => {
+    beforeEach(function () {
         SignupPage.open();
     });
 
