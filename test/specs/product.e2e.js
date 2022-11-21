@@ -1,6 +1,5 @@
 const HomePage = require('../pageobjects/home.page');
 const productData = require('../data/product.data');
-const signupData = require('../data/signup.data');
 
 describe('Luma Ecommerce Site - Adding Items to Cart', () => {
     let itemType, itemCategory, itemSubcategory, itemName, itemSize, itemColour, itemQuantity, itemPrice, total;
@@ -76,7 +75,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         await expect(addToCartButton).toHaveText('Add to Cart'); 
         await addToCartButton.click();
 
-        //check the cart for the item
+        //wait for alert to confirm item has been added to cart
         const alert = await $("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");        
         await alert.waitForDisplayed(5000, true);
         await expect(alert).toHaveTextContaining(`You added ${itemName} to your shopping cart.`);
@@ -165,7 +164,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         await expect(addToCartButton).toHaveText('Add to Cart'); 
         await addToCartButton.click();
 
-        //check the cart for the item
+        //wait for alert to confirm item has been added to cart
         const alert = await $("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");        
         await alert.waitForDisplayed(5000, true);
         await expect(alert).toHaveTextContaining(`You added ${itemName} to your shopping cart.`);
@@ -249,7 +248,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         await expect(addToCartButton).toHaveText('Add to Cart'); 
         await addToCartButton.click();
 
-        //check the cart for the item
+        //wait for alert to confirm item has been added to cart
         const alert = await $("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");        
         await alert.waitForDisplayed(5000, true);
         await expect(alert).toHaveTextContaining(`You added ${itemName} to your shopping cart.`);
@@ -299,7 +298,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         ];
 
         //url for clothing item
-        await browser.url('https://magento.softwaretestingboard.com/cronus-yoga-pant.html'); 
+        await browser.url('https://magento.softwaretestingboard.com/cronus-yoga-pant.html');         
 
         //select the size
         const size = await $('#option-label-size-143-item-177');
@@ -322,7 +321,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         await expect(addToCartButton).toHaveText('Add to Cart'); 
         await addToCartButton.click();
 
-        //check the cart for the item
+        //wait for alert to confirm item has been added to cart
         const alert = await $("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");        
         await alert.waitForDisplayed(5000, true);
         await expect(alert).toHaveTextContaining(`You added ${itemName} to your shopping cart.`);
@@ -384,7 +383,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         await expect(addToCartButton).toHaveText('Add to Cart'); 
         await addToCartButton.click();
 
-        //check the cart for the item
+        //wait for alert to confirm item has been added to cart
         const alert = await $("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");        
         await alert.waitForDisplayed(5000, true);
         await expect(alert).toHaveTextContaining(`You added ${itemName} to your shopping cart.`);
@@ -415,7 +414,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
     
     it('should not add item to cart because of missing or erroneous data', async () => {
         //url for clothing item
-        await browser.url('https://magento.softwaretestingboard.com/cronus-yoga-pant.html'); 
+        await browser.url('https://magento.softwaretestingboard.com/leah-yoga-top.html'); 
 
         //add to cart
         const addToCartButton = await $('#product-addtocart-button');
@@ -448,10 +447,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         await expect(characterError).toBeDisplayed();
         await expect(characterError).toHaveTextContaining('Please enter a valid number in this field.');
 
-        //check the cart for the fourth item - it should not exist
-        const alert = await $("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");        
-        await alert.toBeUndefined();
-
+        //check the cart for the sixth item - it should not exist
         const cartIcon = await $('.action.showcart');
         await cartIcon.click();
 
@@ -461,70 +457,9 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         const viewCart = await $('.action.viewcart');
         await viewCart.click();
 
-        //check for clothing in the cart as the fifth item 
-        const cartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(7) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
-        await expect(cartItemName).toBeUndefined();        
+        //check for clothing in the cart as the sixth item 
+        const cartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(8) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
+        await expect(cartItemName).not.toBeExisting();        
     });
 
-
-//purchasing a product
-//verifying purchase in order history 
-});
-
-describe.skip('Luma Ecommerce Site - Checkout Cart', () => {
-    let firstname, lastname, company, streetAddress1, streetAddress2, streetAddress3, city, state, zip, country, phone;
-
-    it('should not proceec if all required fields are not filled', async () => {
-        //variables that store address information
-        [
-            firstname, lastname, company, 
-            streetAddress1, streetAddress2, streetAddress3, 
-            city, state, zip, 
-            country, phone
-        ] = [
-            signupData[6].firstname, signupData[6].lastname, '', 
-            'Apartment 24', '1 Merry Meadows Avenue', '',
-            'Miami', 'Florida', '000000-0000', 
-            'United States', '987654321'
-        ];
-
-        //go to checkout
-
-        //check the heading on the page and title of browser
-        await expect(pageHeading).toHaveText('Shipping Address');
-        await expect(browser).toHaveTitleContaining('Checkout');
-
-        const cartIcon = await $('.action.showcart');
-        await cartIcon.click();
-
-        const cartDropdown = await $('#ui-id-1');
-        await cartDropdown.waitForDisplayed(5000, true);
-
-        const viewCart = await $('.action.viewcart');
-        await viewCart.click();
-
-        //check for clothing in the cart and assert that all the information is correct
-        const firstCartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
-        await expect(firstCartItemName).toHaveText(itemName);
-        
-        const firstCartItemSize = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(2)');
-        await expect(firstCartItemSize).toHaveText(itemSize.toString());
-
-        const firstCartItemColor = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(4)');
-        await expect(firstCartItemColor).toHaveText(itemColour);
-
-        const firstCartItemQuantity = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(3) > div:first-child > div:first-child > label:first-child > input');
-        await expect(firstCartItemQuantity).toHaveAttrContaining('value', itemQuantity);
-
-        const firstCartItemPrice = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(2) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
-        await expect(firstCartItemPrice).toHaveText(`$${itemPrice.toFixed(2)}`);
-
-        const firstCartItemSubtotal = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(4) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
-        await expect(firstCartItemSubtotal).toHaveText(`$${(itemPrice * itemQuantity).toFixed(2)}`);
-    });  
-
-
-
-//purchasing a product
-//verifying purchase in order history 
 });
