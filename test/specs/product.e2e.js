@@ -1,11 +1,12 @@
 const HomePage = require('../pageobjects/home.page');
 const productData = require('../data/product.data');
+const signupData = require('../data/signup.data');
 
 describe('Luma Ecommerce Site - Adding Items to Cart', () => {
-    let itemType, itemCategory, itemSubcategory, itemName, itemSize, itemColour, itemQuantity, itemPrice;
+    let itemType, itemCategory, itemSubcategory, itemName, itemSize, itemColour, itemQuantity, itemPrice, total;
 
-    beforeEach(function () {
-        HomePage.open('');
+    before(function () {
+        HomePage.open();
     });
 
 
@@ -214,10 +215,11 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         ];
 
         //url for category of items
-        await browser.url('https://magento.softwaretestingboard.com/men/tops-men/jackets-men.html'); 
+        await browser.url('https://magento.softwaretestingboard.com/men/tops-men/jackets-men.html');
+        await expect (browser).toHaveTitleContaining(`${itemSubcategory}`);
 
         //select the desired item
-        const name = await $(`(//a[normalize-space()='${itemName}'])[1]`);          
+        const name = await $('body > div:nth-child(5) > main:nth-child(4) > div:nth-child(4) > div:nth-child(1) > div:nth-child(4) > ol:nth-child(1) > li:nth-child(1) > div:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');          
         await expect(name).toHaveText(itemName);
         await expect(name).toBeClickable();
         await name.click();
@@ -266,7 +268,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         await expect(cartItemName).toHaveText(itemName);
         
         const cartItemSize = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(2)');
-        await expect(cartItemSize).toHaveText(itemSize);
+        await expect(cartItemSize).toHaveText(itemSize.toString());
 
         const cartItemColor = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(4)');
         await expect(cartItemColor).toHaveText(itemColour);
@@ -300,8 +302,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         await browser.url('https://magento.softwaretestingboard.com/cronus-yoga-pant.html'); 
 
         //select the size
-        const size = await $('#option-label-size-143-item-177');        
-        await expect(size).toHaveText(itemSize.toString());
+        const size = await $('#option-label-size-143-item-177');
         await expect(size).toBeClickable();
         await size.click();
 
@@ -335,28 +336,28 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         const viewCart = await $('.action.viewcart');
         await viewCart.click();
 
-        //check for clothing in the cart as the third item 
-        const cartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
+        //check for clothing in the cart as the fourth item 
+        const cartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(6) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
         await expect(cartItemName).toHaveText(itemName);
         
-        const cartItemSize = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(2)');
-        await expect(cartItemSize).toHaveText(itemSize);
+        const cartItemSize = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(6) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(2)');
+        await expect(cartItemSize).toHaveText(itemSize.toString());
 
-        const cartItemColor = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(4)');
+        const cartItemColor = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(6) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(4)');
         await expect(cartItemColor).toHaveText(itemColour);
 
-        const cartItemQuantity = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(3) > div:first-child > div:first-child > label:first-child > input');
+        const cartItemQuantity = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(6) > tr:nth-child(1) > td:nth-child(3) > div:first-child > div:first-child > label:first-child > input');
         await expect(cartItemQuantity).toHaveAttrContaining('value', itemQuantity);
 
-        const cartItemPrice = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(2) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
+        const cartItemPrice = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(6) > tr:nth-child(1) > td:nth-child(2) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
         await expect(cartItemPrice).toHaveText(`$${itemPrice.toFixed(2)}`);
 
-        const cartItemSubtotal = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(4) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
+        const cartItemSubtotal = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(6) > tr:nth-child(1) > td:nth-child(4) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
         await expect(cartItemSubtotal).toHaveText(`$${(itemPrice * itemQuantity).toFixed(2)}`);
     });  
 
 
-    it('should hover over item and add item to cart', async () => {    
+    it('should add a non-clothing item to cart', async () => {    
         //variables that store product information
         [
             itemType, itemCategory, 
@@ -371,13 +372,14 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         ];
 
         //url for item
-        await browser.url('https://magento.softwaretestingboard.com/gear/bags.html'); 
+        await browser.url('https://magento.softwaretestingboard.com/push-it-messenger-bag.html'); 
 
-        //hover over first item
-        browser.elementHover('.product-item-info');
+        //select the quantity
+        const quantity = await $('#qty');  
+        await quantity.setValue(itemQuantity);
 
         //add to cart
-        const addToCartButton = await $('body > div:nth-child(5) > main:nth-child(4) > div:nth-child(4) > div:nth-child(1) > div:nth-child(4) > ol:nth-child(1) > li:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(4) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > button:nth-child(4)'); 
+        const addToCartButton = await $('#product-addtocart-button'); 
         await expect(addToCartButton).toBeClickable(); 
         await expect(addToCartButton).toHaveText('Add to Cart'); 
         await addToCartButton.click();
@@ -396,41 +398,28 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         const viewCart = await $('.action.viewcart');
         await viewCart.click();
 
-        //check for clothing in the cart as the fourth item 
-        const cartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(6) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
+        //check for clothing in the cart as the fifth item 
+        const cartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(7) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
         await expect(cartItemName).toHaveText(itemName);
 
-        const cartItemQuantity = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(6) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(3) > div:first-child > div:first-child > label:first-child > input');
+        const cartItemQuantity = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(7) > tr:nth-child(1) > td:nth-child(3) > div:first-child > div:first-child > label:first-child > input');
         await expect(cartItemQuantity).toHaveAttrContaining('value', itemQuantity);
 
-        const cartItemPrice = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(6) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(2) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
+        const cartItemPrice = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(7) > tr:nth-child(1) > td:nth-child(2) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
         await expect(cartItemPrice).toHaveText(`$${itemPrice.toFixed(2)}`);
 
-        const cartItemSubtotal = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(6) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(4) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
+        const cartItemSubtotal = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(7) > tr:nth-child(1) > td:nth-child(4) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
         await expect(cartItemSubtotal).toHaveText(`$${(itemPrice * itemQuantity).toFixed(2)}`);
     });  
 
     
-    it('should not add item to cart because of missing or erroneous data', async () => {    
-        //variables that store product information
-        [
-            itemType, itemCategory, 
-            itemSubcategory, itemName, 
-            itemSize, itemColour, 
-            itemQuantity, itemPrice
-        ] = [
-            productData[3].type, productData[3].category,
-            productData[3].subcategory, productData[3].name,
-            productData[3].size, productData[3].colour,
-            productData[3].quanitity, productData[3].price
-        ];
-
+    it('should not add item to cart because of missing or erroneous data', async () => {
         //url for clothing item
         await browser.url('https://magento.softwaretestingboard.com/cronus-yoga-pant.html'); 
 
         //add to cart
         const addToCartButton = await $('#product-addtocart-button');
-        await expect(addToCartButton).toHaveText('Add to Cart');
+        await expect(addToCartButton).toHaveAttributeContaining('title', 'Add to Cart');
         await addToCartButton.click();
         
         //errors for not selecting a size or colour
@@ -482,3 +471,60 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
 //verifying purchase in order history 
 });
 
+describe.skip('Luma Ecommerce Site - Checkout Cart', () => {
+    let firstname, lastname, company, streetAddress1, streetAddress2, streetAddress3, city, state, zip, country, phone;
+
+    it('should not proceec if all required fields are not filled', async () => {
+        //variables that store address information
+        [
+            firstname, lastname, company, 
+            streetAddress1, streetAddress2, streetAddress3, 
+            city, state, zip, 
+            country, phone
+        ] = [
+            signupData[6].firstname, signupData[6].lastname, '', 
+            'Apartment 24', '1 Merry Meadows Avenue', '',
+            'Miami', 'Florida', '000000-0000', 
+            'United States', '987654321'
+        ];
+
+        //go to checkout
+
+        //check the heading on the page and title of browser
+        await expect(pageHeading).toHaveText('Shipping Address');
+        await expect(browser).toHaveTitleContaining('Checkout');
+
+        const cartIcon = await $('.action.showcart');
+        await cartIcon.click();
+
+        const cartDropdown = await $('#ui-id-1');
+        await cartDropdown.waitForDisplayed(5000, true);
+
+        const viewCart = await $('.action.viewcart');
+        await viewCart.click();
+
+        //check for clothing in the cart and assert that all the information is correct
+        const firstCartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
+        await expect(firstCartItemName).toHaveText(itemName);
+        
+        const firstCartItemSize = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(2)');
+        await expect(firstCartItemSize).toHaveText(itemSize.toString());
+
+        const firstCartItemColor = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(4)');
+        await expect(firstCartItemColor).toHaveText(itemColour);
+
+        const firstCartItemQuantity = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(3) > div:first-child > div:first-child > label:first-child > input');
+        await expect(firstCartItemQuantity).toHaveAttrContaining('value', itemQuantity);
+
+        const firstCartItemPrice = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(2) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
+        await expect(firstCartItemPrice).toHaveText(`$${itemPrice.toFixed(2)}`);
+
+        const firstCartItemSubtotal = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(4) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
+        await expect(firstCartItemSubtotal).toHaveText(`$${(itemPrice * itemQuantity).toFixed(2)}`);
+    });  
+
+
+
+//purchasing a product
+//verifying purchase in order history 
+});
