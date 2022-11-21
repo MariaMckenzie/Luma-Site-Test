@@ -11,7 +11,7 @@ class CheckoutShippingPage extends Page {
      */
         
     get pageHeading () {
-        return $('li[id="shipping"] div[class="step-title"]');
+        return $('.step-title');
     }
 
     get inputFirstname () {
@@ -70,6 +70,39 @@ class CheckoutShippingPage extends Page {
         return $('.button.action.continue.primary');
     }
 
+    //ERROR MESSAGES
+    get errorInputFirstname () {
+        return $('#error-N6PO1SH');
+    }
+
+    get errorInputLastname () {
+        return $('#error-QPRL823');
+    }
+
+    get errorInputAddressLine1 () {
+        return $('#error-DTDGCHD');
+    }
+
+    get errorInputCity () {
+        return $('#error-CYQV6C5');
+    }
+
+    get errorInputState () {
+        return $('#error-OHQESWS');
+    }
+
+    get errorInputZipCode () {
+        return $('#error-RG1FV0A');
+    }
+    
+    get errorInputCountry () {
+        return $('#error-RF7X6Q9');
+    }
+
+    get errorInputNumber () {
+        return $('#error-BDVD2NT');
+    }
+
 
     /**
      * a method to encapsule automation code to interact with the page
@@ -86,6 +119,9 @@ class CheckoutShippingPage extends Page {
         await this.inputZipCode.setValue(zip);
         await this.inputCountry.setValue(country);  
         await this.inputNumber.setValue(phone);
+
+        await this.checkShippingMethod1.click();
+
         await this.btnSubmit.click();
     }
 
