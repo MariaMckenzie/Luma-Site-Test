@@ -1,5 +1,6 @@
 
 
+const { default: $ } = require('webdriverio/build/commands/browser/$');
 const Page = require('./page');
 
 /**
@@ -22,16 +23,15 @@ class CheckoutPaymentPage extends Page {
         return $("main[id='maincontent'] p:nth-child(1)");
     }
 
-    get title () {
-        return $('.base');
+    get submitBtn () {
+        return $("button[title='Place Order']");
     }
-
     
     /**
      * overwrite specific options to adapt it to page object
      */
     open () {
-        return super.open('checkout/#shipping');
+        return super.open('checkout/#payment');
     }
 }
 
