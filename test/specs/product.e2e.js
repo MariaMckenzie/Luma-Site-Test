@@ -423,13 +423,13 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         await addToCartButton.click();
         
         //errors for not selecting a size or colour
-        const sizeError = await $('#super_attribute[143]-error');
+        const sizeError = await $('body > div:nth-child(5) > main:nth-child(4) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > form:nth-child(1) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(5)');
         await expect(sizeError).toBeDisplayed();
-        await expect(sizeError).toHaveAttrContaining('This is a required field.');
+        await expect(sizeError).toHaveTextContaining('This is a required field.');
 
-        const colorError = await $('#super_attribute[93]-error');
+        const colorError = await $('body > div:nth-child(5) > main:nth-child(4) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > form:nth-child(1) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(5)');
         await expect(colorError).toBeDisplayed();
-        await expect(colorError).toHaveAttrContaining('This is a required field.');
+        await expect(colorError).toHaveTextContaining('This is a required field.');
 
         //error for using zero as quantity
         const quantity = await $('#qty');
@@ -438,7 +438,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
 
         const zeroError = await $('#qty-error');
         await expect(zeroError).toBeDisplayed();
-        await expect(zeroError).toHaveAttrContaining('Please enter a quantity greater than 0.');
+        await expect(zeroError).toHaveTextContaining('Please enter a quantity greater than 0.');
 
         //error for using a non-numeric character as quantity
         await quantity.setValue('a');
@@ -446,7 +446,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
 
         const characterError = await $('#qty-error');
         await expect(characterError).toBeDisplayed();
-        await expect(characterError).toHaveAttrContaining('Please enter a valid number in this field.');
+        await expect(characterError).toHaveTextContaining('Please enter a valid number in this field.');
 
         //check the cart for the fourth item - it should not exist
         const alert = await $("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");        
@@ -462,7 +462,7 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         await viewCart.click();
 
         //check for clothing in the cart as the fifth item 
-        const cartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(7) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(5) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
+        const cartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(7) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
         await expect(cartItemName).toBeUndefined();        
     });
 
