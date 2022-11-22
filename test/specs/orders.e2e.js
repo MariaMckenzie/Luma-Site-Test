@@ -6,7 +6,6 @@ const ordersPage = require("../pageobjects/orders.page");
 
 describe('Luma Ecommerce Site - Purchase Item and Check Order History', () => {
     let firstname, lastname, company, streetAddress1, streetAddress2, streetAddress3, city, state, zip, country, phone;
-
     
 
     it('should complete the checkout process for first time buyer', async () => {
