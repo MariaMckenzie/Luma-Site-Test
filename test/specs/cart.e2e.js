@@ -4,7 +4,7 @@ const productData = require('../data/product.data');
 describe('Luma Ecommerce Site - Adding Items to Cart', () => {
     let itemType, itemCategory, itemSubcategory, itemName, itemSize, itemColour, itemQuantity, itemPrice, total;
 
-    before(function () {
+    before (function () {
         HomePage.open();
     });
 
@@ -90,16 +90,16 @@ describe('Luma Ecommerce Site - Adding Items to Cart', () => {
         await viewCart.click();
 
         //check for clothing in the cart and assert that all the information is correct
-        const firstCartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
+        const firstCartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:last-child > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
         await expect(firstCartItemName).toHaveText(itemName);
         
-        const firstCartItemSize = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(2)');
+        const firstCartItemSize = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:last-child > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(2)');
         await expect(firstCartItemSize).toHaveText(itemSize.toString());
 
-        const firstCartItemColor = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(4)');
+        const firstCartItemColor = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:last-child > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > dl:nth-child(2) > dd:nth-child(4)');
         await expect(firstCartItemColor).toHaveText(itemColour);
 
-        const firstCartItemQuantity = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(3) > div:first-child > div:first-child > label:first-child > input');
+        const firstCartItemQuantity = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:last-child > tr:nth-child(1) > td:nth-child(3) > div:first-child > div:first-child > label:first-child > input');
         await expect(firstCartItemQuantity).toHaveAttrContaining('value', itemQuantity);
 
         const firstCartItemPrice = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:nth-child(3) > tr:nth-child(1) > td:nth-child(2) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1)');
