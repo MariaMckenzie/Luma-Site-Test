@@ -10,11 +10,11 @@ class LoginPage extends Page {
      * define selectors using getter methods
      */    
     get inputEmail () {
-        return $('#email_address');
+        return $('#email');
     }
 
     get inputPassword () {
-        return $('#password');
+        return $('#pass');
     }
 
     get btnSubmit () {
