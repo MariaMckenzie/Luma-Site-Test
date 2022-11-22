@@ -9,7 +9,7 @@ describe('Luma Ecommerce Site - Purchase Item and Check Order History', () => {
 
     
 
-    it.skip('should complete the checkout process for first time buyer', async () => {
+    it('should complete the checkout process for first time buyer', async () => {
         //login to account
         await loginPage.open();
         await loginPage.login(loginData[0].email, loginData[0].password);
@@ -87,14 +87,14 @@ describe('Luma Ecommerce Site - Purchase Item and Check Order History', () => {
 
         //go to checkout using direct link
         await checkoutShippingPage.open();
-        await checkoutShippingPage.continueToPayment2();
+        await checkoutShippingPage.btnSubmit.click();
 
-        //add shipping information
-        await expect(browser).toHaveUrlContaining('https://magento.softwaretestingboard.com/checkout/#shipping');
+        //go to payment section
+        await expect(browser).toHaveUrlContaining('https://magento.softwaretestingboard.com/checkout/#payment');
 
         //proceed to the next step to place order and check the heading on the page and title of browser
         //confirm payment
-        const submitBtn = await $("button[title='Place Order']");
+        const submitBtn = await $("button.action.primary.checkout");
         await submitBtn.click();
 
         //view thank you page
