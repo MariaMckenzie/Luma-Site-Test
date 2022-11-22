@@ -7,6 +7,8 @@ const ordersPage = require("../pageobjects/orders.page");
 describe('Luma Ecommerce Site - Purchase Item and Check Order History', () => {
     let firstname, lastname, company, streetAddress1, streetAddress2, streetAddress3, city, state, zip, country, phone;
 
+    
+
     it.skip('should complete the checkout process for first time buyer', async () => {
         //login to account
         await loginPage.open();
@@ -88,7 +90,7 @@ describe('Luma Ecommerce Site - Purchase Item and Check Order History', () => {
         await checkoutShippingPage.continueToPayment2();
 
         //add shipping information
-        await expect(browser).toHaveUrlContaining('https://magento.softwaretestingboard.com/checkout/#payment');
+        await expect(browser).toHaveUrlContaining('https://magento.softwaretestingboard.com/checkout/#shipping');
 
         //proceed to the next step to place order and check the heading on the page and title of browser
         //confirm payment
