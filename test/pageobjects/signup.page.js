@@ -58,6 +58,7 @@ class SignupPage extends Page {
         return $('#password-confirmation-error');
     }
 
+    //an attempt to catch the error message displayed at the top in firefox
     get errorInputConfirmationPassword2 () {
         return $('main#maincontent.page-main div.page.messages div');
     }
