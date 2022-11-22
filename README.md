@@ -20,7 +20,7 @@ Contains `page.js` files that stores the elements for each page.
 Contains the `specs.js` files that stores the tests that should be ran using the command `npm test`.
 
 ## Tests
-***Note:*** *All tests should be run as is unless otherwise stated below.*
+***Note:*** *All tests should be run as is unless otherwise stated below. Sometimes some tests need to be ran more than twice for it to pass.*
 ### Signup
 Describes the tests that covers the signup process.
 
