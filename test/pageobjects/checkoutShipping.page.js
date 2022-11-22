@@ -11,59 +11,59 @@ class CheckoutShippingPage extends Page {
      */
         
     get pageHeading () {
-        return $('.step-title');
+        return $("li[id='shipping'] div[class='step-title']");
     }
 
     get inputFirstname () {
-        return $('#WLA3O6P');
+        return $('#shipping-new-address-form > div:nth-child(1) > div > input');
     }
 
     get inputLastname () {
-        return $('#E6B0YPJ');
+        return $('#shipping-new-address-form > div:nth-child(2) > div > input');
     }
 
     get inputCompany () {
-        return $('#MW86MVL');
+        return $('#shipping-new-address-form > div:nth-child(3) > div > input');
     }
 
     get inputAddressLine1 () {
-        return $('#YYF2U12');
+        return  $('#shipping-new-address-form > fieldset > div > div:nth-child(1) > div > input');
     }
 
     get inputAddressLine2 () {
-        return $('#SSICY8U');
+        return  $('#shipping-new-address-form > fieldset > div > div:nth-child(2) > div > input');
     }
 
     get inputAddressLine3 () {
-        return $('#A8ET707');
+        return $('#shipping-new-address-form > fieldset > div > div:nth-child(3) > div > input');
     }
 
     get inputCity () {
-        return $('#A99KN26');
+        return  $('#shipping-new-address-form > div:nth-child(5) > div > input');
     }
 
     get inputState () {
-        return $('#NB3CA5F');
+        return $('#shipping-new-address-form > div:nth-child(6) > div > select');
     }
 
     get inputZipCode () {
-        return $('#ITCBF9P');
+        return $('#shipping-new-address-form > div:nth-child(8) > div > input');
     }
     
     get inputCountry () {
-        return $('#N5EEWES');
+        return $('#shipping-new-address-form > div:nth-child(9) > div > select');
     }
 
     get inputNumber () {
-        return $('#P3D5NYR');
+        return $('#shipping-new-address-form > div:nth-child(10) > div > input');
     }
     
     get checkShippingMethod1 () {
-        return $("input[value='tablerate_bestway']");
+        return $("//input[@name='ko_unique_1']");
     }
     
     get checkShippingMethod2 () {
-        return $("input[value='flatrate_flatrate']");
+        return $("input[@name='ko_unique_2']");
     }
 
     get btnSubmit () {
@@ -71,36 +71,16 @@ class CheckoutShippingPage extends Page {
     }
 
     //ERROR MESSAGES
-    get errorInputFirstname () {
-        return $('#error-N6PO1SH');
-    }
-
-    get errorInputLastname () {
-        return $('#error-QPRL823');
-    }
-
     get errorInputAddressLine1 () {
-        return $('#error-DTDGCHD');
+        return $('#shipping-new-address-form > fieldset > div > div:nth-child(1) > div:nth-child(2) > div');
     }
 
     get errorInputCity () {
-        return $('#error-CYQV6C5');
-    }
-
-    get errorInputState () {
-        return $('#error-OHQESWS');
-    }
-
-    get errorInputZipCode () {
-        return $('#error-RG1FV0A');
-    }
-    
-    get errorInputCountry () {
-        return $('#error-RF7X6Q9');
+        return $('#shipping-new-address-form > div:nth-child(5) > div > div');
     }
 
     get errorInputNumber () {
-        return $('#error-BDVD2NT');
+        return $('#shipping-new-address-form > div > div > div:nth-child(3)');
     }
 
 
@@ -115,13 +95,19 @@ class CheckoutShippingPage extends Page {
         await this.inputAddressLine2.setValue(streetAddress2);
         await this.inputAddressLine3.setValue(streetAddress3);
         await this.inputCity.setValue(city);
-        await this.inputState.setValue(state);
+        await this.inputState.selectByVisibleText(state);
         await this.inputZipCode.setValue(zip);
-        await this.inputCountry.setValue(country);  
+        await this.inputCountry.selectByVisibleText(country);  
         await this.inputNumber.setValue(phone);
 
         await this.checkShippingMethod1.click();
 
+        await this.btnSubmit.click();
+    }
+
+    async continueToPayment2 () {
+        await this.checkShippingMethod1.click();
+        
         await this.btnSubmit.click();
     }
 
