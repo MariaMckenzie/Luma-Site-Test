@@ -50,6 +50,17 @@ describe('Luma Ecommerce Site - Signup Page (3)', () => {
     });
 
 
+    it('should give an error message if the email address is not valid', async () => {
+        await SignupPage.signup(signupData[3].firstname, signupData[3].lastname,
+            signupData[3].email, signupData[3].password, 
+            signupData[3].confirmPassword, signupData[3].isChecked);
+        
+        await expect(SignupPage.errorInputEmail).toBeDisplayed();
+        await expect(SignupPage.errorInputEmail).toHaveText(
+            'Please enter a valid email address (Ex: johndoe@domain.com).');
+    });
+
+
     it('should give an error message if the password does not meet the predefined criteria', async () => {
         await SignupPage.signup(signupData[4].firstname, signupData[4].lastname,
             signupData[4].email, signupData[4].password, 
@@ -99,5 +110,3 @@ describe('Luma Ecommerce Site - Signup Page (3)', () => {
     });
 
 });
-
-
