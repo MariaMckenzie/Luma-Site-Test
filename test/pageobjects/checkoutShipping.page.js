@@ -59,7 +59,7 @@ class CheckoutShippingPage extends Page {
     }
     
     get checkShippingMethod1 () {
-        return $("//input[@name='ko_unique_1']");
+        return $(".table-checkout-shipping-method > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1) > input:nth-child(1)");
     }
     
     get checkShippingMethod2 () {
