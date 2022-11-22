@@ -20,15 +20,15 @@ Contains `page.js` files that stores the elements for each page.
 Contains the `specs.js` files that stores the tests that should be ran using the command `npm test`.
 
 ## Tests
-Some tests cover workflows to achieve a speciifc goal while others perform checks. The **main browser** is **chrome**. You can also try to run the tests in Edge and/or Firefox. However, some testcases will fail once the browser is switched because of minor chnages. **For example,** in Firefox, an alert comes up at the top of the page if the passwords are mismatched (this only comes up for a split second). In some cases, it creates an alert at the top of the page and in others it behaves normally like chrome. 
-**See below a screenshot of the alert from firefox during the test run**
-[!image](img\firefox img.png)
+Some tests cover workflows to achieve a speciifc goal while others perform checks. Due to the size of the tests, it is wise to run larger testcases indidividually rather than altogther. The **main browser** is **chrome**. You can also try to run the tests in Edge and/or Firefox. However, some testcases will fail once the browser is switched because of minor chnages. **For example,** in Firefox, an alert comes up at the top of the page if the passwords are mismatched (this only comes up for a split second). In some cases, it creates an alert at the top of the page and in others it behaves normally like chrome. 
+**See screenshots of the alert from firefox during the test run in `\img` folder**
 
 ***Note:*** *All tests should be run as is unless otherwise stated below. Sometimes some tests need to be ran more than once for it to pass sometimes due to the browser among many other things.*
-### Signup
-Describes the tests that covers the signup process.
 
-***Note:*** *You can only run the `createAccount1.e2e.js` and `createAccount2.e2e.js` only once without errors. This is so because you cannot create an account with an email that is already taken. Hence to run this test again, you have to increment the number in the email or try another email altogether. This data **MUST** be changed in the `signup.data.js` file.*
+### Signup
+Describes the tests that covers the signup process. These tests can be run altogether while the others are skipped.
+
+***Note:*** *You can only run the `createAccount1.e2e.js` and `createAccount2.e2e.js` only once without errors. This is so because you cannot create an account with an email that is already taken. Hence to run this test again, you have to increment the number in the email or try another email altogether; otherwise. This data **MUST** be changed in the `signup.data.js` file.*
 
 The tests for this process includes:
 - Creating an account **with** a subscription
@@ -36,8 +36,9 @@ The tests for this process includes:
 - Attempting to create an account with missing and/or erroneous data
 - Attempting to create an account with an existing email address
 
+
 ### Add to Cart
-Describes the tests that covers the 'add to cart' process.
+Describes the tests that covers the 'add to cart' process. These tests should be run individually while the others are skipped. *In the event that any fails, run the test individually - this failure can be due to many factors*
 
 The tests for this process includes:
 - Adding an item to the cart using the side nav bar
@@ -48,7 +49,7 @@ The tests for this process includes:
 -Attempting to add an item to the cart with invalid/erroneous data 
 
 ### Go to Checkout
-Describes the tests that covers the 'go to checkout' process.
+Describes the tests that covers the 'go to checkout' process. These tests take a bit longer so its best to run each one indidividually, however, they should be run with all other test skipped.
 
 The tests for this process includes:
 - Go to checkout from the dropdown cart
