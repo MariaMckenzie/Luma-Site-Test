@@ -12,7 +12,7 @@ class CheckoutPaymentPage extends Page {
      */
         
     get pageHeading () {
-        return $('li[id="shipping"] div[class="step-title"]');
+        return $(".step-title");
     }
 
     get checkBillingAddress () {
