@@ -11,7 +11,7 @@ class OrderPage extends Page {
      */
         
     get orderNumber () {
-        return $("a[class='order-number'] strong");
+        return $("a .order-number' strong");
     }
 
     get lastOrder () {
