@@ -1,5 +1,4 @@
 const checkoutShippingPage = require("../pageobjects/checkoutShipping.page");
-const checkoutPaymentPage = require("../pageobjects/checkoutPayment.page");
 const loginPage = require("../pageobjects/login.page");
 const loginData = require("../data/login.data");
 const ordersPage = require("../pageobjects/orders.page");
@@ -8,7 +7,7 @@ describe('Luma Ecommerce Site - Purchase Item and Check Order History', () => {
     let firstname, lastname, company, streetAddress1, streetAddress2, streetAddress3, city, state, zip, country, phone;
 
     
-    it.skip('should complete the checkout process for first time buyer', async () => {
+    it('should complete the checkout process for first time buyer', async () => {
         //login to account
         await loginPage.open();
         await loginPage.login(loginData[0].email, loginData[0].password);
@@ -22,7 +21,7 @@ describe('Luma Ecommerce Site - Purchase Item and Check Order History', () => {
         ] = [
             loginData[0].firstname, loginData[0].lastname, '', 
             'Apartment 24', '1 Merry Meadows Avenue', '',
-            'Miami', 'Florida', '000000-0000', 
+            'Miami', 'Florida', '123456-0000', 
             'United States', '987654321'
         ];
 
@@ -44,6 +43,7 @@ describe('Luma Ecommerce Site - Purchase Item and Check Order History', () => {
         await expect(browser).toHaveTitleContaining('Checkout');
 
         //add shipping information
+        await expect(browser).toHaveUrlContaining('https://magento.softwaretestingboard.com/checkout/#shipping');
         await checkoutShippingPage.continueToPayment(
             firstname, lastname, company, streetAddress1, streetAddress2, 
             streetAddress3, city, state, zip, country, phone
@@ -64,7 +64,7 @@ describe('Luma Ecommerce Site - Purchase Item and Check Order History', () => {
         //view orders (this order is the first order)
         await ordersPage.open();
 
-        await expect(ordersPage.firstOrder).toHaveTextContaining(orderNum);
+        await expect(ordersPage.lastOrder).toHaveTextContaining(orderNum);
     });   
 
     
