@@ -20,7 +20,7 @@ Contains `page.js` files that stores the elements for each page.
 Contains the `specs.js` files that stores the tests that should be ran using the command `npm test`.
 
 ## Tests
-The main browser is chrome. You can also try to run the tests in Edge and/or Firefox. However, some testcases will fail once the browser is switched because of minor chnages. **For example,** in Firefox, an alert comes up at the top of the page if the passwords are mismatched (this only comes up for a split second). In some cases, it creates an alert at the top of the page and in others it behaves normally like chrome. 
+Some tests cover workflows to achieve a speciifc goal while others perform checks. The **main browser** is **chrome**. You can also try to run the tests in Edge and/or Firefox. However, some testcases will fail once the browser is switched because of minor chnages. **For example,** in Firefox, an alert comes up at the top of the page if the passwords are mismatched (this only comes up for a split second). In some cases, it creates an alert at the top of the page and in others it behaves normally like chrome. 
 **See below a screenshot of the alert from firefox during the test run**
 [!image](img\firefox img.png)
 
