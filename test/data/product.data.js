@@ -17,7 +17,7 @@ module.exports = [
         size: 28,
         colour: "Green",
         price: 49.00,
-        quanitity: 4,
+        quanitity: 2,
     },
     { //2
         type: "Men",
