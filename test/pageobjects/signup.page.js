@@ -58,6 +58,10 @@ class SignupPage extends Page {
         return $('#password-confirmation-error');
     }
 
+    get errorInputConfirmationPassword2 () {
+        return $('main#maincontent.page-main div.page.messages div');
+    }
+
     get errorExistingAccount () {
         return $('#maincontent > div.page.messages > div:nth-child(2) > div > div');
     }
