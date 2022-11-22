@@ -1,26 +1,26 @@
 module.exports = [
-    { //0
+    { //0 - first time buyer
         firstname: "Tom",
         lastname: "Smith",
-        email: "tomsmith1@serendipity.com",
+        email: "tomsmith3@serendipity.com",
         password: "P@ssw0rd"
     },
-    { //1
+    { //1 - first time buyer
         firstname: "Tina",
         lastname: "Smith",
         email: "tinasmith@serendipity.com",
         password: "P@ssw0rd"
     },
-    { //3 - first time buyer email
+    { //3 - first time buyer 
         firstname: "Tom",
         lastname: "Smith",
         email: "tomsmith@mail.com",
         password: "P@ssw0rd"
     },
-    { //4 - first time buyer email
-        firstname: "Jane",
+    { //4 - recurring buyer
+        firstname: "John",
         lastname: "Doe",
-        email: "janedoe@mail.com",
+        email: "johndoe@mail.com",
         password: "P@ssw0rd"
     },
 ]
