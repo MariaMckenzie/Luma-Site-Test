@@ -11,7 +11,7 @@ class CheckoutShippingPage extends Page {
      */
         
     get pageHeading () {
-        return $("li[id='shipping'] div[class='step-title']");
+        return $("li#shipping div.step-title");
     }
 
     get inputFirstname () {
