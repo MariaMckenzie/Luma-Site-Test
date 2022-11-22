@@ -5,21 +5,17 @@ const Page = require('./page');
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class CheckoutPaymentPage extends Page {
+class OrderPage extends Page {
     /**
      * define selectors using getter methods
      */
         
-    get pageHeading () {
-        return $('.base');
+    get orderNumber () {
+        return $("a[class='order-number'] strong");
     }
 
-    get firstOrder () {
-        return $('tbody tr:nth-child(1) td:nth-child(1)');
-    }
-
-    get secondOrder () {
-        return $("tbody tr:nth-child(2) td:nth-child(1)");
+    get lastOrder () {
+        return $("tbody tr:first-child td:nth-child(1)");
     }
     
     /**
@@ -30,4 +26,4 @@ class CheckoutPaymentPage extends Page {
     }
 }
 
-module.exports = new CheckoutPaymentPage();
+module.exports = new OrderPage();
