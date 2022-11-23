@@ -15,7 +15,7 @@ class CheckoutShippingPage extends Page {
     }
 
     get inputEmail () {
-        return $('body > div:nth-child(5) > main:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(5) > ol:nth-child(1) > li:nth-child(1) > div:nth-child(2) > form:nth-child(1) > fieldset:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)');
+        return $('body > div:nth-child(5) > main:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(5) > ol:nth-child(1) > li:nth-child(1) > div:nth-child(2) > form:nth-child(1) > fieldset:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input');
     }
 
     get inputFirstname () {
@@ -111,8 +111,8 @@ class CheckoutShippingPage extends Page {
         await this.btnSubmit.click();
     }
 
-    async continueToPayment2 (email, firstname, lastname, company, streetAddress1, streetAddress2, streetAddress3, city, state, zip, country, phone) {
-        await this.inputFirstname.setValue(email);
+    async continueToPayment3 (email, firstname, lastname, company, streetAddress1, streetAddress2, streetAddress3, city, state, zip, country, phone) {
+        await this.email.setValue(email);
         await this.inputFirstname.setValue(firstname);
         await this.inputLastname.setValue(lastname);
         await this.inputCompany.setValue(company);
