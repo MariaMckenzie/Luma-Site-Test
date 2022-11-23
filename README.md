@@ -41,12 +41,12 @@ The tests for this process includes:
 Describes the tests that covers the 'add to cart' process. These tests should be run individually while the others are skipped. *In the event that any fails, run the test individually - this failure can be due to many factors*
 
 The tests for this process includes:
-- Adding an item to the cart using the side nav bar
+- Adding an item to the cart using options from the side nav bar
 - Adding an item to the using the search bar
 - Adding an item to the cart using the direct link to a subcategory
 - Adding an item to the cart using a direct link to the item
 - Adding a non-clothing item to the cart
--Attempting to add an item to the cart with invalid/erroneous data 
+- Attempting to add an item to the cart with invalid/erroneous data
 
 ### Go to Checkout
 Describes the tests that covers the 'go to checkout' process. These tests take a bit longer so its best to run each one indidividually, however, they should be run with all other test skipped.
