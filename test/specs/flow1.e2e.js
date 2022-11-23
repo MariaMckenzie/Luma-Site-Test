@@ -3,7 +3,7 @@ const signupData = require('../data/signup.data');
 const ordersPage = require("../pageobjects/orders.page");
 const checkoutShippingPage = require("../pageobjects/checkoutShipping.page");
 
-describe.skip('Luma Ecommerce Site - Flow 1', () => {
+describe('Luma Ecommerce Site - Flow 1', () => {
     let firstname, lastname, company, streetAddress1, streetAddress2, streetAddress3, city, state, zip, country, phone;
     let orderNum;
 
@@ -37,7 +37,7 @@ describe.skip('Luma Ecommerce Site - Flow 1', () => {
     });
 
     
-    it('should add item to cart using direct link', async () => {
+    it('should add item to cart', async () => {
         //url for item
         await browser.url('https://magento.softwaretestingboard.com/savvy-shoulder-tote.html'); 
 
@@ -48,12 +48,23 @@ describe.skip('Luma Ecommerce Site - Flow 1', () => {
         await expect(addToCartButton).toBeClickable(); 
         await expect(addToCartButton).toHaveText('Add to Cart'); 
         await addToCartButton.click();
+
+        //wait for alert to confirm item has been added to cart
+        const alert = await $("div[data-bind='html: $parent.prepareMessageForHtml(message.text)']");        
+        await alert.waitForDisplayed(8000, true);
     });
     
 
     it('should checkout successfully', async () => {
-        //go to checkout using direct link
-        await checkoutShippingPage.open();
+        const cartIcon = await $('.action.showcart');
+        await cartIcon.click();
+
+        const cartDropdown = await $('#ui-id-1');
+        await cartDropdown.waitForDisplayed(5000, true);
+    
+        //go to checkout
+        const goToCheckOutButton = await $("button[title='Proceed to Checkout']");
+        await goToCheckOutButton.click();
 
         //check the heading on the page and title of browser
         await expect(checkoutShippingPage.pageHeading).toHaveText('Shipping Address');
@@ -98,7 +109,7 @@ describe.skip('Luma Ecommerce Site - Flow 1', () => {
         //view orders (this order is the first order)
         await ordersPage.open();
 
-        await expect(ordersPage.lastOrder).toHaveTextContaining(orderNum);
+        await expect(ordersPage.nthOrder).toHaveTextContaining(orderNum);
     });   
 
 
