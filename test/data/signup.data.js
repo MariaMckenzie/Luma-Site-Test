@@ -2,7 +2,7 @@ module.exports = [
     { //0 - valid info with subscription
         firstname: "Tom",
         lastname: "Smith",
-        email: "tomsmith20@serendipity.com",
+        email: "tomsmith26@serendipity.com",
         password: "P@ssw0rd",
         confirmPassword: "P@ssw0rd",
         isChecked: true,
