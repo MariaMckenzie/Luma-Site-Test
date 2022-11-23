@@ -9,12 +9,7 @@ class OrderPage extends Page {
     /**
      * define selectors using getter methods
      */
-        
-    get orderNumber () {
-        return $("a .order-number' strong");
-    }
-
-    get lastOrder () {
+    get nthOrder () {
         return $("tbody tr:first-child td:nth-child(1)");
     }
     
