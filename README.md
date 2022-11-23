@@ -25,42 +25,11 @@ Some tests cover workflows to achieve a speciifc goal while others perform check
 
 ***Note:*** *All tests should be run as is unless otherwise stated below. Sometimes some tests need to be ran more than once for it to pass sometimes due to the browser among many other things.*
 
-### Signup
-Describes the tests that covers the signup process. These tests can be run altogether while the others are skipped.
+### Process Flows
+Each flow should be ran indidividually to avoid any disruptions.
 
-***Note:*** *You can only run the `createAccount1.e2e.js` and `createAccount2.e2e.js` only once without errors. This is so because you cannot create an account with an email that is already taken. Hence to run this test again, you have to increment the number in the email or try another email altogether; otherwise. This data **MUST** be changed in the `signup.data.js` file.*
+***Note:*** *You can only run the `flow1.e2e.js` and `flow2.e2e.js` only once without errors. This is so because you cannot create an account with an email that is already taken. Hence to run this test again, you have to increment the number in the email or try another email altogether; otherwise. This data **MUST** be changed in the `signup.data.js` file.*
 
-The tests for this process includes:
-- Creating an account **with** a subscription
-- Creating an account **without** a Subscription
-- Attempting to create an account with missing and/or erroneous data
-- Attempting to create an account with an existing email address
+## Other tests
+The tests in the `cart.e2e.js` file are just random tests that assert that the cart works as it should. The tests in the `signup.e2e.js` are just tests that assert that the signup page works as expected in relation to the input fields. Also, the tests in the `checkout.e2e.js` file covers the getting to the checkout point and ensuring that regardless of the route taken the user can get to the checkout page.
 
-
-### Add to Cart
-Describes the tests that covers the 'add to cart' process. These tests should be run individually while the others are skipped. *In the event that any fails, run the test individually - this failure can be due to many factors*
-
-The tests for this process includes:
-- Adding an item to the cart using options from the side nav bar
-- Adding an item to the using the search bar
-- Adding an item to the cart using the direct link to a subcategory
-- Adding an item to the cart using a direct link to the item
-- Adding a non-clothing item to the cart
-- Attempting to add an item to the cart with invalid/erroneous data
-
-### Go to Checkout
-Describes the tests that covers the 'go to checkout' process. These tests take a bit longer so its best to run each one indidividually, however, they should be run with all other test skipped.
-
-The tests for this process includes:
-- Go to checkout from the dropdown cart
-- Go to checkout using the button from the cart page
-- Go to checkout using the direct link 
-
-### Place Order and Check Order History
-Describes the tests that covers the place order and check order history processes.
-
-***Note:*** *The user has to be logged in to make the purchase appear in their order history. Also, the first test can only be run once since it would be the very *first* order placed by the user. To run the test again you have to change the email address in the `login.data.js` file.*
-
-The tests for this process includes:
-- Complete the purchase as a first-time buyer
-- Complete the process as a recurring buyer
