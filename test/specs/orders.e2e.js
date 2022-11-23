@@ -64,7 +64,7 @@ describe.skip('Luma Ecommerce Site - Purchase Item and Check Order History', () 
         //view orders (this order is the first order)
         await ordersPage.open();
 
-        await expect(ordersPage.lastOrder).toHaveTextContaining(orderNum);
+        await expect(ordersPage.nthOrder).toHaveTextContaining(orderNum);
     });   
 
     
@@ -105,7 +105,7 @@ describe.skip('Luma Ecommerce Site - Purchase Item and Check Order History', () 
         //view orders (this order is the first order)
         await ordersPage.open();
 
-        await expect(ordersPage.lastOrder).toHaveTextContaining(orderNum);
+        await expect(ordersPage.nthOrder).toHaveTextContaining(orderNum);
     });   
 
 });
