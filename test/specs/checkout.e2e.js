@@ -1,7 +1,7 @@
 const productData = require("../data/product.data");
 const checkoutShippingPage = require("../pageobjects/checkoutShipping.page");
 
-describe('Luma Ecommerce Site - Go to Checkout', () => {
+describe.skip('Luma Ecommerce Site - Go to Checkout', () => {
     let itemName,  itemQuantity;
 
     it('should go to checkout from the dropdown cart', async () => {

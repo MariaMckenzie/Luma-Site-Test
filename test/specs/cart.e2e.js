@@ -1,7 +1,7 @@
 const HomePage = require('../pageobjects/home.page');
 const productData = require('../data/product.data');
 
-describe('Luma Ecommerce Site - Adding Items to Cart', () => {
+describe.skip('Luma Ecommerce Site - Adding Items to Cart', () => {
     let itemType, itemCategory, itemSubcategory, itemName, itemSize, itemColour, itemQuantity, itemPrice, total;
 
     before (function () {
