@@ -3,7 +3,7 @@ const loginPage = require("../pageobjects/login.page");
 const loginData = require("../data/login.data");
 const ordersPage = require("../pageobjects/orders.page");
 
-describe.skip('Luma Ecommerce Site - Purchase Item and Check Order History', () => {
+describe('Luma Ecommerce Site - Purchase Item and Check Order History', () => {
     let firstname, lastname, company, streetAddress1, streetAddress2, streetAddress3, city, state, zip, country, phone;
 
     
