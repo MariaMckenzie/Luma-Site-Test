@@ -112,7 +112,7 @@ class CheckoutShippingPage extends Page {
     }
 
     async continueToPayment3 (email, firstname, lastname, company, streetAddress1, streetAddress2, streetAddress3, city, state, zip, country, phone) {
-        await this.email.setValue(email);
+        await this.inputEmail.setValue(email);
         await this.inputFirstname.setValue(firstname);
         await this.inputLastname.setValue(lastname);
         await this.inputCompany.setValue(company);
