@@ -20,7 +20,7 @@ Contains `page.js` files that stores the elements for each page.
 Contains the `specs.js` files that stores the tests that should be ran using the command `npm test`.
 
 ## Tests
-Some tests cover workflows to achieve a speciifc goal while others perform checks. Due to the size of the tests, it is wise to run larger testcases indidividually rather than altogther. The **main browser** is **chrome**. You can also try to run the tests in Edge and/or Firefox. However, some testcases will fail once the browser is switched because of minor chnages. **For example,** in Firefox, an alert comes up at the top of the page if the passwords are mismatched (this only comes up for a split second). In some cases, it creates an alert at the top of the page and in others it behaves normally like chrome. 
+Some tests cover workflows to achieve a speciifc goal while others perform checks. Due to the size of the tests, it is wise to run larger testcases indidividually rather than altogther. The **main browser** is **chrome**. You can also try to run the tests in Edge and/or Firefox. However, some testcases will fail once the browser is switched because of minor changes. **For example,** in Firefox, an alert comes up at the top of the page if the passwords are mismatched (this only comes up for a split second). In some cases, it creates an alert at the top of the page and in others it behaves normally like chrome. 
 **See screenshots of the alert from firefox during the test run in `\img` folder**
 
 ***Note:*** *All tests should be run as is unless otherwise stated below. Sometimes some tests need to be ran more than once for it to pass sometimes due to the browser among many other things.*
@@ -32,4 +32,3 @@ Each flow should be ran indidividually to avoid any disruptions.
 
 ## Other tests
 The tests in the `cart.e2e.js` file are just random tests that assert that the cart works as it should. The tests in the `signup.e2e.js` are just tests that assert that the signup page works as expected in relation to the input fields. Also, the tests in the `checkout.e2e.js` file covers the getting to the checkout point and ensuring that regardless of the route taken the user can get to the checkout page.
-
