@@ -3,7 +3,7 @@ const signupData = require('../data/signup.data');
 const ordersPage = require("../pageobjects/orders.page");
 const checkoutShippingPage = require("../pageobjects/checkoutShipping.page");
 
-describe('Luma Ecommerce Site - Flow 1', () => {
+describe.skip('Luma Ecommerce Site - Flow 1', () => {
     let firstname, lastname, company, streetAddress1, streetAddress2, streetAddress3, city, state, zip, country, phone;
     let orderNum;
 
