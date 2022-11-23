@@ -22,11 +22,7 @@ describe('Luma Ecommerce Site - Flow 2', () => {
 
         //go to cart
         await browser.url('https://magento.softwaretestingboard.com/checkout/cart/');
-
-        //check for item in cart
-        const cartItemName = await $('body > div:nth-child(5) > main:nth-child(3) > div:nth-child(4) > div:nth-child(1) > div:nth-child(5) > form:nth-child(2) > div:nth-child(2) > table:nth-child(1) > tbody:last-child > tr:nth-child(1) > td:nth-child(1) > div:nth-child(2) > strong:nth-child(1) > a:nth-child(1)');
-        await expect(cartItemName).toHaveText(itemName);
-        
+       
 
         const goToCheckOutButton = await $('.action.primary.checkout'); 
         await expect(goToCheckOutButton).toBeClickable(); 
