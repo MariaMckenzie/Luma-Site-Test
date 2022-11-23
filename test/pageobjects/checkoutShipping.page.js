@@ -14,6 +14,10 @@ class CheckoutShippingPage extends Page {
         return $("li#shipping div.step-title");
     }
 
+    get inputEmail () {
+        return $('body > div:nth-child(5) > main:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(5) > ol:nth-child(1) > li:nth-child(1) > div:nth-child(2) > form:nth-child(1) > fieldset:nth-child(1) > div:nth-child(1) > div:nth-child(2) > input:nth-child(1)');
+    }
+
     get inputFirstname () {
         return $('#shipping-new-address-form > div:nth-child(1) > div > input');
     }
@@ -104,6 +108,25 @@ class CheckoutShippingPage extends Page {
     async continueToPayment2 () {
         await this.checkShippingMethod1.click();
         
+        await this.btnSubmit.click();
+    }
+
+    async continueToPayment2 (email, firstname, lastname, company, streetAddress1, streetAddress2, streetAddress3, city, state, zip, country, phone) {
+        await this.inputFirstname.setValue(email);
+        await this.inputFirstname.setValue(firstname);
+        await this.inputLastname.setValue(lastname);
+        await this.inputCompany.setValue(company);
+        await this.inputAddressLine1.setValue(streetAddress1);
+        await this.inputAddressLine2.setValue(streetAddress2);
+        await this.inputAddressLine3.setValue(streetAddress3);
+        await this.inputCity.setValue(city);
+        await this.inputState.selectByVisibleText(state);
+        await this.inputZipCode.setValue(zip);
+        await this.inputCountry.selectByVisibleText(country);  
+        await this.inputNumber.setValue(phone);
+
+        await this.checkShippingMethod1.click();
+
         await this.btnSubmit.click();
     }
 
