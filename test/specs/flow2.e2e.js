@@ -72,18 +72,19 @@ describe('Luma Ecommerce Site - Flow 2', () => {
 
         //view thank you page
         await expect(browser).toHaveUrlContaining('https://magento.softwaretestingboard.com/checkout/onepage/success/');
-        orderNum = await $(".checkout-success > p:first-child > a > strong").getText();
+        orderNum = await $("div[class='checkout-success'] p:first-child span").getText();
+        
+        //click button to create account
+        const createAccountBtn = await $(".action.primary[data-bind='attr: { href: getUrl() }']");
+        createAccountBtn.click();
     }); 
 
 
-    it('should create an account without a subcription', async () => {        
-        const createAccountBtn = await $('.action.primary');
-        createAccountBtn.click();
-           
+    it('should create an account without a subcription', async () => {            
         //sign up for a new account
-        await SignupPage.signup(signupData[0].firstname, signupData[0].lastname,
-            signupData[0].email, signupData[0].password, 
-            signupData[0].confirmPassword, signupData[0].isChecked);
+        await SignupPage.signup(signupData[1].firstname, signupData[1].lastname,
+            signupData[1].email, signupData[1].password, 
+            signupData[1].confirmPassword, signupData[1].isChecked);
         
         const alert = await $('.message-success.success.message');
         await alert.waitForDisplayed(5000, true);
@@ -92,17 +93,17 @@ describe('Luma Ecommerce Site - Flow 2', () => {
 
         const userInfo = await $('#maincontent > div.columns > div.column.main > div.block.block-dashboard-info > div.block-content > div.box.box-information > div.box-content > p');
         await expect(userInfo).toHaveTextContaining( //check account name
-            `${signupData[0].firstname} ${signupData[0].lastname}`
+            `${signupData[1].firstname} ${signupData[1].lastname}`
         );
 
         const subscriptionInfo = await $('#maincontent > div.columns > div.column.main > div.block.block-dashboard-info > div.block-content > div.box.box-newsletter > div.box-content > p');
         await expect(subscriptionInfo).toHaveText( //check subscription information
-            'You are subscribed to "General Subscription".'
+            "You aren't subscribed to our newsletter."
         );
 
         const welcomeText = await $('span.logged-in');
         await expect(welcomeText).toHaveTextContaining( //check name in welcome text
-            `Welcome, ${signupData[0].firstname} ${signupData[0].lastname}!`
+            `Welcome, ${signupData[1].firstname} ${signupData[1].lastname}!`
         );
     });
 
@@ -110,7 +111,6 @@ describe('Luma Ecommerce Site - Flow 2', () => {
     it('should find the order in the purchase history', async () => {
         //view orders (this order is the first order)
         await ordersPage.open();
-
         await expect(ordersPage.nthOrder).toHaveTextContaining(orderNum);
     });     
 
